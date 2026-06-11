@@ -810,6 +810,8 @@ for variant_path in variant_paths:
             env.Append(CCFLAGS=['-fsanitize=%s' % sanitizers,
                                  '-fno-omit-frame-pointer'],
                        LINKFLAGS=['-fsanitize=%s' % sanitizers] + libsan)
+            env.Append(CCFLAGS=['-fno-sanitize=vptr'],
+                       LINKFLAGS=['-fno-sanitize=vptr'])
 
             if main["BIN_TARGET_ARCH"] == "x86_64":
                 # Sanitizers can enlarge binary size drammatically, north of
